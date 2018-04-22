@@ -1,0 +1,60 @@
+{
+  "bsGenerateInput": {
+    "prefix": "#bsGenerateInput",
+    "body": "#bsGenerateInput(\\$${1:ref})",
+    "description": "",
+    "scope": "source.velocity"
+  },
+  "bsGenerateLabel": {
+    "prefix": "#bsGenerateLabel",
+    "body": "#bsGenerateLabel(\\$${1:ref})",
+    "description": "",
+    "scope": "source.velocity"
+  },
+  "searchDataEntries": {
+    "prefix": "sde",
+    "body": [
+      "#set( \\$searchResult = \\$PublicDataHelper.searchDataEntries(\\$application, \\$form.identifier, \\$formLocale.locale, \\$pageIndex, \\$pageSize, 5, \\${searchQuery}, \\$!{StringUtils.join(\\$allFormFields,',')}, \\$sortQuery) )"
+    ],
+    "description": "Search dataEntries"
+  },
+  "createJsonBuilder": {
+    "prefix": "cjb",
+    "body": [
+      "#set(\\$sampleJSON = \\$PublicDataHelper.createJsonObjectBuilder())",
+      "##set(\\$sampleJSON = \\$PublicDataHelper.createJsonArrayBuilder())",
+      "\\$!sampleJSON.set('keyOne', 'someValue')",
+      "\\$!sampleJSON.set('keyTwo', 'someOtherValue')"
+    ],
+    "description": "Search dataEntries"
+  },
+  "getDataEntryByDataBundle": {
+    "prefix": "gdebdb",
+    "body": [
+      "#set( \\$dataEntry = \\$PublicDataHelper.getDataEntryByDataBundle(\\$application, \\$form.identifier, \\$formLocale.locale, \\$uuid))"
+    ],
+    "description": "Get dataEntry by dataBundleId"
+  },
+  "getChildDataEntries": {
+    "prefix": "gcde",
+    "body": [
+      "#set( \\$searchResult = \\$PublicDataHelper.getChildDataEntries(\\$application, \\$parentDataBundleId, \\$form.identifier, '', \\$formLocale.locale, \\$pageIndex, \\$pageSize, 5, \\$!{StringUtils.join(\\$allFormFields,',')}, \\$sortQuery) )"
+    ],
+    "description": "Get child dataEntries"
+  },
+  "getForm": {
+    "prefix": "gf",
+    "body": [
+      "#set( \\$form = \\$PublicDataHelper.getForm('IDENT', \\$application))",
+      "#set( \\$formLocale = \\$form.getFormLocale(\\$formLocale.locale))",
+      "",
+      "#set( \\$someField = \\$FormTools.getFieldFor('some', \\$form))"
+    ],
+    "description": "Get form"
+  },
+  "getUrlParam": {
+    "prefix": "gup",
+    "body": ["#set( \\$uuid = \\$paramHelper.getParamAsString('uuid') )"],
+    "description": "Get url parameter"
+  }
+}
